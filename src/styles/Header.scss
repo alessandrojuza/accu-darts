@@ -9,10 +9,23 @@ $text-white: #fcfcfc;
 
   height: 80px;
 
-  p,
-  h1,
-  h3 {
-    color: $text-white;
-    margin: 0 25px 0 25px;
+  .header-sub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p,
+    h1,
+    h3 {
+      color: $text-white;
+      margin: 0 25px 0 25px;
+      border-bottom: 2px solid transparent;
+      transition: border-bottom 0.3s;
+    }
+
+    h3:hover {
+      border-bottom: 2px solid $text-white;
+      cursor: pointer;
+    }
   }
 }

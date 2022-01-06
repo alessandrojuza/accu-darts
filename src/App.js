@@ -10,6 +10,7 @@ function App() {
       <Header />
       <div className="game-wrapper">
         <NewGame />
+        <GameBoard />
       </div>
       <Footer />
     </div>
