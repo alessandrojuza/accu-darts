@@ -5,15 +5,17 @@ $text-white: #fcfcfc;
   font-family: "Oswald", sans-serif;
   font-family: "Quicksand", sans-serif;
 
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
+  box-sizing: border-box;
 
   text-align: center;
   color: $text-white;
 }
 
 .game-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background: $background-blue;
   height: 90vh;
   background-image: url(../src/img/wave-1.svg);
