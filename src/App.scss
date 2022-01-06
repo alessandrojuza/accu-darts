@@ -1,0 +1,22 @@
+$background-blue: #264653;
+$text-white: #fcfcfc;
+
+.App {
+  font-family: "Oswald", sans-serif;
+  font-family: "Quicksand", sans-serif;
+
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+
+  text-align: center;
+  color: $text-white;
+}
+
+.game-wrapper {
+  background: $background-blue;
+  height: 90vh;
+  background-image: url(../src/img/wave-1.svg);
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
