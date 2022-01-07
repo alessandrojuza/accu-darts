@@ -26,20 +26,22 @@ const NewGame = ({
             <img src={logoblue} alt="logo" className="logo-blue" />
           </FadeIn>
           <h3>START A NEW GAME:</h3>
-          <div className="game-type-wrapper">
-            <p>Game type:</p>
-            <select
-              name="cars"
-              id="cars"
-              defaultValue="501"
-              onChange={(e) => {
-                setSelectValue(e.target.value);
-              }}
-            >
-              <option value="101">101</option>
-              <option value="301">301</option>
-              <option value="501">501</option>
-            </select>
+          <div className="game-and-leg-wrapper">
+            <div className="game-type-wrapper">
+              <p>Game type:</p>
+              <select
+                name="cars"
+                id="cars"
+                defaultValue="501"
+                onChange={(e) => {
+                  setSelectValue(e.target.value);
+                }}
+              >
+                <option value="101">101</option>
+                <option value="301">301</option>
+                <option value="501">501</option>
+              </select>
+            </div>
           </div>
           <div className="player-name-wrapper">
             <p>Player 1 Name:</p>

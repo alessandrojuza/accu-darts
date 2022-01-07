@@ -11,10 +11,14 @@ function App() {
   const [selectValue, setSelectValue] = useState("501");
   const [player1, setPlayer1] = useState("");
   const [player2, setPlayer2] = useState("");
+  const [player1Score, setPlayer1Score] = useState(selectValue);
+  const [player2Score, setPlayer2Score] = useState(selectValue);
 
   const launchGameBoard = () => {
     setFadeOutClassNewGame(true);
     setInterval(() => {
+      setPlayer1Score(selectValue);
+      setPlayer2Score(selectValue);
       setNewGameIsVisible("");
     }, 300);
   };
@@ -38,6 +42,8 @@ function App() {
           selectValue={selectValue}
           player1={player1}
           player2={player2}
+          player1Score={player1Score}
+          player2Score={player2Score}
         />
       </div>
       <Footer />

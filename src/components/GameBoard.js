@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import "../styles/GameBoard.scss";
+import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
 
-const GameBoard = ({ newGameIsVisible, selectValue, player1, player2 }) => {
-  const [player1Score, setPlayer1Score] = useState(selectValue);
-  const [player2Score, setPlayer2Score] = useState(selectValue);
-
+const GameBoard = ({
+  newGameIsVisible,
+  player1,
+  player2,
+  player1Score,
+  setPlayer1Score,
+  player2Score,
+  setPlayer2Score,
+}) => {
   return (
     <div className={`game-board ${newGameIsVisible}`}>
       <div className="div1">
@@ -16,10 +22,12 @@ const GameBoard = ({ newGameIsVisible, selectValue, player1, player2 }) => {
         <h4 className="player-name">{player2}</h4>
       </div>
       <div className="div3">
-        <p>CIAO</p>
+        <input type="text" placeholder={`Enter ${player1} score:`} />
+        <ArrowCircleRightRoundedIcon className="btn-arrow" />
       </div>
       <div className="div4">
-        <p>CIAO</p>
+        <input type="text" placeholder={`Enter ${player2} score:`} />
+        <ArrowCircleRightRoundedIcon className="btn-arrow" />
       </div>
       <div className="div5">
         <p>CIAO</p>

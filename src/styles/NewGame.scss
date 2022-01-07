@@ -1,5 +1,6 @@
 $background-blue: #274754;
 $text-white: #fcfcfc;
+$accent-red: #e76f51;
 
 .new-game {
   box-sizing: border-box;
@@ -86,7 +87,7 @@ $text-white: #fcfcfc;
   }
 
   button:hover {
-    background: $background-blue;
+    background: $accent-red;
     color: $text-white;
     cursor: pointer;
   }

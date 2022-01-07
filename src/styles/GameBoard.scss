@@ -1,5 +1,6 @@
 $background-blue: #274754;
 $text-white: #fcfcfc;
+$accent-red: #e76f51;
 
 .game-board {
   box-sizing: border-box;
@@ -15,9 +16,20 @@ $text-white: #fcfcfc;
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: 0.8fr 0.5fr 1.5fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+
+  .player-name {
+    margin: 0;
+  }
+
+  .points {
+    font-size: 56pt;
+    margin: 0;
+    font-family: "Russo One", sans-serif;
+    font-weight: 500;
+  }
 
   .div1 {
     grid-area: 1 / 1 / 2 / 3;
@@ -28,13 +40,6 @@ $text-white: #fcfcfc;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    .points {
-      font-size: 56pt;
-      margin: 0;
-      font-family: "Oswald", sans-serif;
-      font-weight: 500;
-    }
   }
   .div2 {
     grid-area: 1 / 3 / 2 / 5;
@@ -44,14 +49,33 @@ $text-white: #fcfcfc;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
 
-    .points {
-      font-size: 56pt;
-      margin: 0;
-      font-family: "Oswald", sans-serif;
-      font-weight: 500;
+  .div3,
+  .div4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      border: none;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      border-radius: 10px;
+
+      height: 50px;
+      width: 200px;
+
+      font-family: "Quicksand", sans-serif;
+      text-align: center;
+      font-size: 9pt;
+      font-weight: 700;
+    }
+
+    input:focus {
+      outline: none;
     }
   }
+
   .div3 {
     border-right: 1px dotted $background-blue;
 
@@ -60,6 +84,17 @@ $text-white: #fcfcfc;
   .div4 {
     grid-area: 2 / 3 / 3 / 5;
   }
+
+  .btn-arrow {
+    margin-left: 20px;
+    transform: scale(2);
+    transition: color 0.3s;
+  }
+
+  .btn-arrow:hover {
+    color: $accent-red;
+  }
+
   .div5 {
     grid-area: 3 / 1 / 4 / 2;
   }
