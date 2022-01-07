@@ -3,7 +3,6 @@ import "../styles/NewGame.scss";
 import logoblue from "../img/logo-blue.png";
 import FadeIn from "react-fade-in";
 import { Animate } from "react-simple-animate";
-import GameBoard from "./GameBoard";
 
 const NewGame = ({
   fadeOutClassNewGame,
