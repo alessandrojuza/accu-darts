@@ -9,10 +9,14 @@ $text-white: #fcfcfc;
 
   text-align: center;
   color: $text-white;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .game-wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
