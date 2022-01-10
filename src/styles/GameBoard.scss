@@ -31,6 +31,10 @@ $accent-red: #e76f51;
     font-weight: 500;
   }
 
+  .green-circle {
+    font-size: 18pt;
+  }
+
   .div1 {
     grid-area: 1 / 1 / 2 / 3;
     border-right: 1px dotted $background-blue;
@@ -88,29 +92,42 @@ $accent-red: #e76f51;
   .btn-arrow {
     margin-left: 20px;
     transform: scale(2);
+    color: $accent-red;
     transition: color 0.3s;
   }
 
   .btn-arrow:hover {
-    color: $accent-red;
+    color: #f4a261;
+    cursor: pointer;
   }
 
   .div5 {
     grid-area: 3 / 1 / 4 / 2;
+    text-align: left;
+    margin-left: 60px;
   }
   .div6 {
     border-right: 1px dotted $background-blue;
 
     grid-area: 3 / 2 / 4 / 3;
+    overflow: scroll;
   }
   .div7 {
     grid-area: 3 / 3 / 4 / 4;
+
+    overflow: scroll;
   }
   .div8 {
     grid-area: 3 / 4 / 4 / 5;
+    text-align: right;
+    margin-right: 60px;
   }
 }
 
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.inactive {
+  color: rgb(153, 153, 153);
 }
