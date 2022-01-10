@@ -16,10 +16,14 @@ const GameBoard = ({
   const [player1ScoreInput, setPlayer1ScoreInput] = useState("");
   const [player2ScoreInput, setPlayer2ScoreInput] = useState("");
 
+  const [player1ScoreHistory, setPlayer1ScoreHistory] = useState([]);
+  const [player2ScoreHistory, setPlayer2ScoreHistory] = useState([]);
+
   const addScorePlayer1 = () => {
     if (isNaN(player1ScoreInput)) setPlayer1Score(player1Score);
     else {
       setPlayer1Score(player1Score - player1ScoreInput);
+      setPlayer1ScoreHistory([player1ScoreInput, ...player1ScoreHistory]);
     }
   };
 
@@ -27,6 +31,7 @@ const GameBoard = ({
     if (isNaN(player2ScoreInput)) setPlayer1Score(player2Score);
     else {
       setPlayer2Score(player2Score - player2ScoreInput);
+      setPlayer2ScoreHistory([player2ScoreInput, ...player2ScoreHistory]);
     }
   };
 
@@ -70,10 +75,16 @@ const GameBoard = ({
         <p>CIAO</p>
       </div>
       <div className="div6">
-        <p>CIAO</p>
+        <p>Score History:</p>
+        {player1ScoreHistory.map((e) => {
+          return <h4>{e}</h4>;
+        })}
       </div>
       <div className="div7">
-        <p>CIAO</p>
+        <p>Score History:</p>
+        {player2ScoreHistory.map((e) => {
+          return <h4>{e}</h4>;
+        })}
       </div>
       <div className="div8">
         <p>CIAO</p>
