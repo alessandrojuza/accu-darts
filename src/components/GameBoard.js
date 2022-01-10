@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/GameBoard.scss";
 import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
+import { getCheckouts } from "./Checkouts";
 
 const GameBoard = ({
   newGameIsVisible,
@@ -23,11 +24,11 @@ const GameBoard = ({
   const [input1Hidden, setInput1Hidden] = useState("");
   const [input2Hidden, setInput2Hidden] = useState("hidden");
 
-  const [score180Player1, setScore180Player1] = useState([]);
-  const [score160Player1, setScore160Player1] = useState([]);
-  const [score140Player1, setScore140Player1] = useState([]);
-  const [score120Player1, setScore120Player1] = useState([]);
-  const [score100Player1, setScore100Player1] = useState([]);
+  const [score180Player1, setScore180Player1] = useState(0);
+  const [score160Player1, setScore160Player1] = useState(0);
+  const [score140Player1, setScore140Player1] = useState(0);
+  const [score120Player1, setScore120Player1] = useState(0);
+  const [score100Player1, setScore100Player1] = useState(0);
 
   const [score180Player2, setScore180Player2] = useState([]);
   const [score160Player2, setScore160Player2] = useState([]);
@@ -35,18 +36,25 @@ const GameBoard = ({
   const [score120Player2, setScore120Player2] = useState([]);
   const [score100Player2, setScore100Player2] = useState([]);
 
+  const [possibleCheckoutsPlayer1, setPossibleCheckoutsPlayer1] = useState("");
+  const [possibleCheckoutsPlayer2, setPossibleCheckoutsPlayer2] = useState("");
+
+  const getAverage = (scoreHistory) =>
+    scoreHistory.reduce((a, b) => a + b) / scoreHistory.length;
+
   const addScorePlayer1 = () => {
     if (isNaN(player1ScoreInput)) setPlayer1Score(player1Score);
     else {
       if (player1ScoreInput <= player1Score) {
+        setPossibleCheckoutsPlayer1(getCheckouts(player1Score));
         setPlayer1Score(player1Score - player1ScoreInput);
         setPlayer1ScoreHistory([player1ScoreInput, ...player1ScoreHistory]);
         setPlayer1Inactive("inactive");
         setPlayer2Inactive("");
         setInput1Hidden("hidden");
         setInput2Hidden("");
+        setScore100Player1(score100Player1 + 1);
       } else {
-        setPlayer1Score(player1ScoreInput - player1Score);
       }
     }
   };
@@ -55,6 +63,7 @@ const GameBoard = ({
     if (isNaN(player2ScoreInput)) setPlayer1Score(player2Score);
     else {
       if (player2ScoreInput <= player2Score) {
+        setPossibleCheckoutsPlayer2(getCheckouts(player2Score));
         setPlayer2Score(player2Score - player2ScoreInput);
         setPlayer2ScoreHistory([player2ScoreInput, ...player2ScoreHistory]);
         setPlayer2Inactive("inactive");
@@ -72,10 +81,12 @@ const GameBoard = ({
       <div className={`div1 ${player1Inactive}`}>
         <h1 className="points">{player1Score}</h1>
         <h4 className="player-name">{player1}</h4>
+        <p>{possibleCheckoutsPlayer1}</p>
       </div>
       <div className={`div2 ${player2Inactive}`}>
         <h1 className="points">{player2Score}</h1>
         <h4 className="player-name">{player2}</h4>
+        <p>{possibleCheckoutsPlayer2}</p>
       </div>
       <div className="div3">
         <input
