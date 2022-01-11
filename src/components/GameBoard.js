@@ -55,6 +55,7 @@ const GameBoard = ({
         setInput2Hidden("");
         setScore100Player1(score100Player1 + 1);
       } else {
+        setPlayer1Score(player1ScoreInput - player1Score);
       }
     }
   };
