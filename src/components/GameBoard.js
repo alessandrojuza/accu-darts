@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/GameBoard.scss";
 import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
 import { getCheckouts } from "./Checkouts";
+import logoBull from "../img/logo-bull.png";
 
 const GameBoard = ({
   newGameIsVisible,
@@ -41,14 +42,9 @@ const GameBoard = ({
   const [possibleCheckoutsPlayer1, setPossibleCheckoutsPlayer1] = useState("");
   const [possibleCheckoutsPlayer2, setPossibleCheckoutsPlayer2] = useState("");
 
-  // const getAverage = (scoreHistory) => {
-  //   if (player1ScoreHistory.length >= 1) {
-  //     return
-  //     {
-  //       scoreHistory.reduce((a, b) => a + b) / scoreHistory.length;
-  //     }
-  //   } else return 0;
-  // };
+  const [bullPlayer1Class, setBullPlayer1Class] = useState("");
+  const [bullPlayer2Class, setBullPlayer2Class] = useState("hidden");
+
   const getAverage = function (scoreHistory) {
     if (scoreHistory.length >= 1) {
       return (
@@ -104,6 +100,8 @@ const GameBoard = ({
     setPlayer2Inactive("");
     setInput1Hidden("hidden");
     setInput2Hidden("");
+    setBullPlayer1Class("hidden");
+    setBullPlayer2Class("");
   };
 
   const handlePlayer2Change = () => {
@@ -114,6 +112,8 @@ const GameBoard = ({
     setPlayer1Inactive("");
     setInput2Hidden("hidden");
     setInput1Hidden("");
+    setBullPlayer1Class("");
+    setBullPlayer2Class("hidden");
   };
 
   const addScorePlayer1 = () => {
@@ -201,14 +201,23 @@ const GameBoard = ({
         />
       </div>
       <div className={`div5 ${player1Inactive}`}>
-        <h4>{`Game Average: ${getAverage(player1ScoreHistory).toFixed(2)}`}</h4>
-        <p></p>
-        <h4>Amount:</h4>
-        <p>{`180: ${score180Player1}`}</p>
-        <p>{`160-179: ${score160Player1}`}</p>
-        <p>{`140-159: ${score140Player1}`}</p>
-        <p>{`120-139: ${score120Player1}`}</p>
-        <p>{`100-119: ${score100Player1}`}</p>
+        <div className="score-wrapper">
+          <h4>{`Game Average: ${getAverage(player1ScoreHistory).toFixed(
+            2
+          )}`}</h4>
+          <p></p>
+          <h4>Amount:</h4>
+          <p>{`180: ${score180Player1}`}</p>
+          <p>{`160-179: ${score160Player1}`}</p>
+          <p>{`140-159: ${score140Player1}`}</p>
+          <p>{`120-139: ${score120Player1}`}</p>
+          <p>{`100-119: ${score100Player1}`}</p>
+        </div>
+        <img
+          src={logoBull}
+          alt="bull logo"
+          className={`logo-bull ${bullPlayer1Class}`}
+        />
       </div>
       <div className={`div6 ${player1Inactive}`}>
         <h4>Score History:</h4>
@@ -224,14 +233,23 @@ const GameBoard = ({
         })}
       </div>
       <div className={`div8 ${player2Inactive}`}>
-        <h4>{`Game Average: ${getAverage(player2ScoreHistory).toFixed(2)}`}</h4>
-        <p></p>
-        <h4>Amount:</h4>
-        <p>{`180: ${score180Player2}`}</p>
-        <p>{`160-179: ${score160Player2}`}</p>
-        <p>{`140-159: ${score140Player2}`}</p>
-        <p>{`120-139: ${score120Player2}`}</p>
-        <p>{`100-119: ${score100Player2}`}</p>
+        <div className="score-wrapper">
+          <h4>{`Game Average: ${getAverage(player2ScoreHistory).toFixed(
+            2
+          )}`}</h4>
+          <p></p>
+          <h4>Amount:</h4>
+          <p>{`180: ${score180Player2}`}</p>
+          <p>{`160-179: ${score160Player2}`}</p>
+          <p>{`140-159: ${score140Player2}`}</p>
+          <p>{`120-139: ${score120Player2}`}</p>
+          <p>{`100-119: ${score100Player2}`}</p>
+        </div>
+        <img
+          src={logoBull}
+          alt="bull logo"
+          className={`logo-bull ${bullPlayer2Class}`}
+        />
       </div>
     </div>
   );
