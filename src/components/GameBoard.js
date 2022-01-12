@@ -5,10 +5,9 @@ import { getCheckouts } from "./Checkouts";
 
 const GameBoard = ({
   newGameIsVisible,
+  selectValue,
   player1,
-  setPlayer1,
   player2,
-  setPlayer2,
   player1Score,
   setPlayer1Score,
   player2Score,
@@ -39,51 +38,61 @@ const GameBoard = ({
   const [possibleCheckoutsPlayer1, setPossibleCheckoutsPlayer1] = useState("");
   const [possibleCheckoutsPlayer2, setPossibleCheckoutsPlayer2] = useState("");
 
-  // const getAverage = (scoreHistory) =>
-  //   scoreHistory.reduce((a, b) => a + b) / scoreHistory.length;
+  const getAverage = (scoreHistory) =>
+    scoreHistory.reduce((a, b) => a + b) / scoreHistory.length;
+
+  const handlePlayer1Change = () => {
+    // This function contains the actions that needs to be performed in case of positive or negative score.
+    setPossibleCheckoutsPlayer1(getCheckouts(player1Score));
+    setPlayer1ScoreHistory([player1ScoreInput, ...player1ScoreHistory]);
+    setPlayer1Inactive("inactive");
+    setPlayer2Inactive("");
+    setInput1Hidden("hidden");
+    setInput2Hidden("");
+  };
+
+  const handlePlayer2Change = () => {
+    // Same as above, but for player 2.
+    setPossibleCheckoutsPlayer2(getCheckouts(player2Score));
+    setPlayer2ScoreHistory([player2ScoreInput, ...player2ScoreHistory]);
+    setPlayer2Inactive("inactive");
+    setPlayer1Inactive("");
+    setInput2Hidden("hidden");
+    setInput1Hidden("");
+  };
 
   const addScorePlayer1 = () => {
-    if (isNaN(player1ScoreInput)) {
-      setPlayer1Score(player1Score);
-      alert("Score must be a number!");
-    } else {
+    if (isNaN(player1ScoreInput)) setPlayer1Score(player1Score);
+    else {
       if (player1ScoreInput <= player1Score) {
-        setPossibleCheckoutsPlayer1(getCheckouts(player1Score));
+        handlePlayer1Change();
         setPlayer1Score(player1Score - player1ScoreInput);
-        setPlayer1ScoreHistory([player1ScoreInput, ...player1ScoreHistory]);
-        setPlayer1Inactive("inactive");
-        setPlayer2Inactive("");
-        setInput1Hidden("hidden");
-        setInput2Hidden("");
-        // if (player1Score === 180) setScore180Player1(score180Player1 + 1);
-        // if (player1Score >= 160 && player1Score <= 179)
-        //   setScore160Player1(score160Player1 + 1);
-        // if (player1Score >= 140 && player1Score <= 159)
-        //   setScore140Player1(score140Player1 + 1);
-        // if (player1Score >= 120 && player1Score <= 139)
-        //   setScore120Player1(score120Player1 + 1);
-        // if (player1Score >= 100 && player1Score <= 119)
-        //   setScore100Player1(score100Player1 + 1);
-      } else {
+      }
+      if (player1ScoreInput >= player1Score) {
+        setPlayer1Score(player1ScoreInput - player1Score);
+        handlePlayer1Change();
+      }
+      if (player1ScoreInput == player1Score) {
+        setPlayer1Score(selectValue);
+        setPlayer2Score(selectValue);
       }
     }
   };
 
   const addScorePlayer2 = () => {
-    if (isNaN(player2ScoreInput)) {
-      setPlayer1Score(player2Score);
-      alert("Score must be a number!");
-    } else {
+    if (isNaN(player2ScoreInput)) setPlayer1Score(player2Score);
+    else {
       if (player2ScoreInput <= player2Score) {
-        setPossibleCheckoutsPlayer2(getCheckouts(player2Score));
         setPlayer2Score(player2Score - player2ScoreInput);
-        setPlayer2ScoreHistory([player2ScoreInput, ...player2ScoreHistory]);
-        setPlayer2Inactive("inactive");
-        setPlayer1Inactive("");
-        setInput2Hidden("hidden");
-        setInput1Hidden("");
-      } else {
+        handlePlayer2Change();
+      }
+      if (player2ScoreInput >= player2Score) {
         setPlayer2Score(player2ScoreInput - player2Score);
+        handlePlayer2Change();
+      }
+      if (player2ScoreInput == player2Score) {
+        setPlayer1Score(selectValue);
+        setPlayer2Score(selectValue);
       }
     }
   };
