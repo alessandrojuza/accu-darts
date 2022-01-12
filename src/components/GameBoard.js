@@ -41,6 +41,44 @@ const GameBoard = ({
   const getAverage = (scoreHistory) =>
     scoreHistory.reduce((a, b) => a + b) / scoreHistory.length;
 
+  const handleAmounts1 = () => {
+    // This function handles the amounts of the various score ranges for player 1.
+    if (player1ScoreInput == 180) {
+      setScore180Player1(score180Player1 + 1);
+    }
+    if (player1ScoreInput >= 160 && player1ScoreInput <= 179) {
+      setScore160Player1(score160Player1 + 1);
+    }
+    if (player1ScoreInput >= 140 && player1ScoreInput <= 159) {
+      setScore140Player1(score140Player1 + 1);
+    }
+    if (player1ScoreInput >= 120 && player1ScoreInput <= 139) {
+      setScore120Player1(score120Player1 + 1);
+    }
+    if (player1ScoreInput >= 100 && player1ScoreInput <= 119) {
+      setScore100Player1(score100Player1 + 1);
+    }
+  };
+
+  const handleAmounts2 = () => {
+    // This function handles the amounts of the various score ranges for player 2.
+    if (player2ScoreInput == 180) {
+      setScore180Player2(score180Player2 + 1);
+    }
+    if (player2ScoreInput >= 160 && player2ScoreInput <= 179) {
+      setScore160Player2(score160Player2 + 1);
+    }
+    if (player2ScoreInput >= 140 && player2ScoreInput <= 159) {
+      setScore140Player2(score140Player2 + 1);
+    }
+    if (player2ScoreInput >= 120 && player2ScoreInput <= 139) {
+      setScore120Player2(score120Player2 + 1);
+    }
+    if (player2ScoreInput >= 100 && player2ScoreInput <= 119) {
+      setScore100Player2(score100Player2 + 1);
+    }
+  };
+
   const handlePlayer1Change = () => {
     // This function contains the actions that needs to be performed in case of positive or negative score.
     setPossibleCheckoutsPlayer1(getCheckouts(player1Score));
@@ -62,8 +100,11 @@ const GameBoard = ({
   };
 
   const addScorePlayer1 = () => {
-    if (isNaN(player1ScoreInput)) setPlayer1Score(player1Score);
-    else {
+    if (isNaN(player1ScoreInput)) {
+      setPlayer1Score(player1Score);
+      alert("Score must be a number!");
+    } else {
+      handleAmounts1();
       if (player1ScoreInput <= player1Score) {
         handlePlayer1Change();
         setPlayer1Score(player1Score - player1ScoreInput);
@@ -80,8 +121,11 @@ const GameBoard = ({
   };
 
   const addScorePlayer2 = () => {
-    if (isNaN(player2ScoreInput)) setPlayer1Score(player2Score);
-    else {
+    if (isNaN(player2ScoreInput)) {
+      setPlayer1Score(player2Score);
+      alert("Score must be a number!");
+    } else {
+      handleAmounts2();
       if (player2ScoreInput <= player2Score) {
         setPlayer2Score(player2Score - player2ScoreInput);
         handlePlayer2Change();
