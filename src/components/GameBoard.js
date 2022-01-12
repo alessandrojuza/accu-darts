@@ -65,7 +65,6 @@ const GameBoard = ({
         // if (player1Score >= 100 && player1Score <= 119)
         //   setScore100Player1(score100Player1 + 1);
       } else {
-        setPlayer1Score(player1ScoreInput - player1Score);
       }
     }
   };
