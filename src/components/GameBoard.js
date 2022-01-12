@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/GameBoard.scss";
 import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
-import { getCheckouts } from "./Checkouts";
+import { checkouts } from "./Checkouts";
 import logoBull from "../img/logo-bull.png";
 
 const GameBoard = ({
@@ -44,6 +44,15 @@ const GameBoard = ({
 
   const [bullPlayer1Class, setBullPlayer1Class] = useState("");
   const [bullPlayer2Class, setBullPlayer2Class] = useState("hidden");
+
+  const getCheckouts1 = (score) => {
+    checkouts.map((e, index) => {
+      if (Number(e[0]) == Number(score)) {
+        setPossibleCheckoutsPlayer1(e[1]);
+        // console.log(e.map((e) => e[1]));
+      }
+    });
+  };
 
   const getAverage = function (scoreHistory) {
     if (scoreHistory.length >= 1) {
@@ -94,7 +103,7 @@ const GameBoard = ({
 
   const handlePlayer1Change = () => {
     // This function contains the actions that needs to be performed in case of positive or negative score.
-    setPossibleCheckoutsPlayer1(getCheckouts(player1Score));
+    getCheckouts1(player1Score);
     setPlayer1ScoreHistory([player1ScoreInput, ...player1ScoreHistory]);
     setPlayer1Inactive("inactive");
     setPlayer2Inactive("");
@@ -106,7 +115,6 @@ const GameBoard = ({
 
   const handlePlayer2Change = () => {
     // Same as above, but for player 2.
-    setPossibleCheckoutsPlayer2(getCheckouts(player2Score));
     setPlayer2ScoreHistory([player2ScoreInput, ...player2ScoreHistory]);
     setPlayer2Inactive("inactive");
     setPlayer1Inactive("");

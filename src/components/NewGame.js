@@ -36,7 +36,7 @@ const NewGame = ({
                   setSelectValue(e.target.value);
                 }}
               >
-                <option value="101">101</option>
+                {/* <option value="101">101</option> */}
                 <option value="301">301</option>
                 <option value="501">501</option>
               </select>
