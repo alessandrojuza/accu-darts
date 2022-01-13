@@ -14,16 +14,24 @@ $text-white: #fcfcfc;
     justify-content: center;
     align-items: center;
 
+    a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14pt;
+    }
+
     p,
     h1,
-    h3 {
+    h3,
+    a {
       color: $text-white;
       margin: 0 25px 0 25px;
       border-bottom: 2px solid transparent;
       transition: border-bottom 0.3s;
     }
 
-    h3:hover {
+    h3:hover,
+    a:hover {
       border-bottom: 2px solid $text-white;
       cursor: pointer;
     }
