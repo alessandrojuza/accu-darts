@@ -46,10 +46,12 @@ const GameBoard = ({
   const [bullPlayer2Class, setBullPlayer2Class] = useState("hidden");
 
   useEffect(() => {
+    // This check for every score update, then it calculates the possible checkout combo.
     getCheckouts(player1Score, setPossibleCheckoutsPlayer1);
   }, [player1Score]);
 
   useEffect(() => {
+    // Same as above, for player 2.
     getCheckouts(player2Score, setPossibleCheckoutsPlayer2);
   }, [player2Score]);
 
@@ -63,6 +65,7 @@ const GameBoard = ({
   };
 
   const getAverage = function (scoreHistory) {
+    // This function return the average score of the player.
     if (scoreHistory.length >= 1) {
       return (
         scoreHistory.reduce((a, b) => Number(a) + Number(b)) /
@@ -151,7 +154,6 @@ const GameBoard = ({
         setPlayer2Score(selectValue);
       }
     }
-    // getCheckouts1(player1Score);
   };
 
   const addScorePlayer2 = () => {
@@ -186,7 +188,7 @@ const GameBoard = ({
       <div className={`div2 ${player2Inactive}`}>
         <h1 className="points">{player2Score}</h1>
         <h3 className="player-name">{player2}</h3>
-        <h4 className="legs-won">{`Legs: ${legsPlayer1}`}</h4>
+        <h4 className="legs-won">{`Legs: ${legsPlayer2}`}</h4>
         <p>{possibleCheckoutsPlayer2}</p>
       </div>
       <div className="div3">
