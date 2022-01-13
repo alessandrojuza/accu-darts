@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/GameBoard.scss";
 import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
 import { checkouts } from "./Checkouts";
@@ -45,11 +45,19 @@ const GameBoard = ({
   const [bullPlayer1Class, setBullPlayer1Class] = useState("");
   const [bullPlayer2Class, setBullPlayer2Class] = useState("hidden");
 
-  const getCheckouts1 = (score) => {
+  useEffect(() => {
+    getCheckouts(player1Score, setPossibleCheckoutsPlayer1);
+  }, [player1Score]);
+
+  useEffect(() => {
+    getCheckouts(player2Score, setPossibleCheckoutsPlayer2);
+  }, [player2Score]);
+
+  const getCheckouts = (score, setCheckouts) => {
+    // This function set the possible checkout combos for both players.
     checkouts.map((e, index) => {
       if (Number(e[0]) == Number(score)) {
-        setPossibleCheckoutsPlayer1(e[1]);
-        // console.log(e.map((e) => e[1]));
+        setCheckouts(e[1][0]);
       }
     });
   };
@@ -103,7 +111,7 @@ const GameBoard = ({
 
   const handlePlayer1Change = () => {
     // This function contains the actions that needs to be performed in case of positive or negative score.
-    getCheckouts1(player1Score);
+    // getCheckouts1(player1Score);
     setPlayer1ScoreHistory([player1ScoreInput, ...player1ScoreHistory]);
     setPlayer1Inactive("inactive");
     setPlayer2Inactive("");
@@ -143,6 +151,7 @@ const GameBoard = ({
         setPlayer2Score(selectValue);
       }
     }
+    // getCheckouts1(player1Score);
   };
 
   const addScorePlayer2 = () => {
