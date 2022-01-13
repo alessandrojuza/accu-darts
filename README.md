@@ -1,6 +1,6 @@
 # Accu Darts
 
-Accu Darts is an online scoreboard for darts player.
+Accu Darts is an online scoreboard for darts players.
 
 ### Live Version:
 https://accudarts.netlify.app/
