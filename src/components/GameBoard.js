@@ -141,17 +141,22 @@ const GameBoard = ({
       alert("Score must be a number!");
     } else {
       handleAmounts1();
-      if (player1ScoreInput <= player1Score) {
+      if (player1ScoreInput > 180) {
+        alert("Please, enter a valid score");
+      }
+      if (player1ScoreInput <= player1Score && player1ScoreInput <= 180) {
         handlePlayer1Change();
         setPlayer1Score(player1Score - player1ScoreInput);
       }
-      if (player1ScoreInput >= player1Score) {
+      if (player1ScoreInput >= player1Score && player1ScoreInput <= 180) {
         setPlayer1Score(player1ScoreInput - player1Score);
         handlePlayer1Change();
       }
-      if (player1ScoreInput == player1Score) {
+      if (player1ScoreInput == player1Score && player1ScoreInput <= 180) {
         setPlayer1Score(selectValue);
         setPlayer2Score(selectValue);
+        setLegsPlayer1(legsPlayer1 + 1);
+        setPossibleCheckoutsPlayer1("");
       }
     }
   };
@@ -162,17 +167,22 @@ const GameBoard = ({
       alert("Score must be a number!");
     } else {
       handleAmounts2();
-      if (player2ScoreInput <= player2Score) {
+      if (player2ScoreInput > 180) {
+        alert("Please, enter a valid score");
+      }
+      if (player2ScoreInput <= player2Score && player2ScoreInput <= 180) {
         setPlayer2Score(player2Score - player2ScoreInput);
         handlePlayer2Change();
       }
-      if (player2ScoreInput >= player2Score) {
+      if (player2ScoreInput >= player2Score && player2ScoreInput <= 180) {
         setPlayer2Score(player2ScoreInput - player2Score);
         handlePlayer2Change();
       }
-      if (player2ScoreInput == player2Score) {
+      if (player2ScoreInput == player2Score && player2ScoreInput <= 180) {
         setPlayer1Score(selectValue);
         setPlayer2Score(selectValue);
+        setLegsPlayer2(legsPlayer2 + 1);
+        setPossibleCheckoutsPlayer2("");
       }
     }
   };
@@ -221,9 +231,7 @@ const GameBoard = ({
       </div>
       <div className={`div5 ${player1Inactive}`}>
         <div className="score-wrapper">
-          <h4>{`Game Average: ${getAverage(player1ScoreHistory).toFixed(
-            2
-          )}`}</h4>
+          <h4>{`Average: ${getAverage(player1ScoreHistory).toFixed(2)}`}</h4>
           <p></p>
           <h4>Amount:</h4>
           <p>{`180: ${score180Player1}`}</p>
@@ -239,23 +247,21 @@ const GameBoard = ({
         />
       </div>
       <div className={`div6 ${player1Inactive}`}>
-        <h4>Score History:</h4>
+        <h4>History:</h4>
 
         {player1ScoreHistory.map((e) => {
           return <h4>{e}</h4>;
         })}
       </div>
       <div className={`div7 ${player2Inactive}`}>
-        <h4>Score History:</h4>
+        <h4>History:</h4>
         {player2ScoreHistory.map((e) => {
           return <h4>{e}</h4>;
         })}
       </div>
       <div className={`div8 ${player2Inactive}`}>
         <div className="score-wrapper">
-          <h4>{`Game Average: ${getAverage(player2ScoreHistory).toFixed(
-            2
-          )}`}</h4>
+          <h4>{`Average: ${getAverage(player2ScoreHistory).toFixed(2)}`}</h4>
           <p></p>
           <h4>Amount:</h4>
           <p>{`180: ${score180Player2}`}</p>

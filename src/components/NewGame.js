@@ -15,11 +15,12 @@ const NewGame = ({
 
   return (
     <Animate
+      className="animate"
       play={fadeOutClassNewGame}
       start={{ opacity: 1, filter: "blur(0)" }}
       end={{ opacity: 0, filter: "blur(10px)" }}
     >
-      <FadeIn transitionDuration="1000">
+      <FadeIn transitionDuration="1000" className="fade-in">
         <div className={`new-game ${newGameDisplay}`}>
           <FadeIn transitionDuration="1000" delay="500">
             <img src={logoblue} alt="logo" className="logo-blue" />

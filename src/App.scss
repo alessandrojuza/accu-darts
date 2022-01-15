@@ -13,6 +13,7 @@ $text-white: #fcfcfc;
 
   display: flex;
   flex-direction: column;
+  width: 100vw;
 }
 
 .game-wrapper {
@@ -23,6 +24,7 @@ $text-white: #fcfcfc;
 
   background: $background-blue;
   height: 90vh;
+  width: 100vw;
   background-image: url(../src/img/wave-1.svg);
   background-position: bottom;
   background-repeat: no-repeat;

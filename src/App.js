@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.scss";
+import "./styles/Queries.scss";
 import Header from "./components/Header";
 import NewGame from "./components/NewGame";
 import GameBoard from "./components/GameBoard";

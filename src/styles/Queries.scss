@@ -1,0 +1,56 @@
+@media (max-width: 1024px) {
+  .game-board {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    a,
+    h3 {
+      margin: 10px !important;
+      font-size: 10pt !important;
+    }
+  }
+
+  .new-game {
+    transform: scale(0.8);
+    // max-width: 400px;
+
+    input {
+      width: 250px !important;
+    }
+  }
+
+  .game-board {
+    width: 480px !important;
+
+    p {
+      font-size: 10pt;
+    }
+
+    h4 {
+      font-size: 10pt;
+    }
+
+    .btn-arrow {
+      margin: 0px;
+    }
+
+    .div1,
+    .div2 {
+      .points {
+        font-size: 32pt;
+      }
+    }
+
+    .div3,
+    .div4 {
+      flex-direction: column;
+      input {
+        margin-bottom: 30px;
+        width: 120px !important;
+      }
+    }
+  }
+}
