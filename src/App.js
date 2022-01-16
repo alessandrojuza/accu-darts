@@ -4,7 +4,6 @@ import "./styles/Queries.scss";
 import Header from "./components/Header";
 import NewGame from "./components/NewGame";
 import GameBoard from "./components/GameBoard";
-import Footer from "./components/Footer";
 
 function App() {
   const [fadeOutClassNewGame, setFadeOutClassNewGame] = useState(false);
@@ -54,7 +53,6 @@ function App() {
           setPlayer2Score={setPlayer2Score}
         />
       </div>
-      <Footer />
     </div>
   );
 }
